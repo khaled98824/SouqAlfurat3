@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>952078302451-0a7oort8qv0uri7g8nve1p543qai9kqm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.952078302451-0a7oort8qv0uri7g8nve1p543qai9kqm</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDnusCcTfwbdX-itcqLOYi9RojnEaNa5VA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>952078302451</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>sooq1alzour.sooq1alzour</string>
+	<key>PROJECT_ID</key>
+	<string>alsooq-b49fd</string>
+	<key>STORAGE_BUCKET</key>
+	<string>alsooq-b49fd.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:952078302451:ios:cadcc805535ac8fdc78b86</string>
+	<key>DATABASE_URL</key>
+	<string>https://alsooq-b49fd.firebaseio.com</string>
+</dict>
+</plist>

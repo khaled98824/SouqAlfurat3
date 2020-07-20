@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "952078302451",
+    "firebase_url": "https://alsooq-b49fd.firebaseio.com",
+    "project_id": "alsooq-b49fd",
+    "storage_bucket": "alsooq-b49fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952078302451:android:ede1ffa5f4334193c78b86",
+        "android_client_info": {
+          "package_name": "sooq1alzour.sooq1alzour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952078302451-r96qj2j3a66jffgimb0q99aq5t87jfjc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxrTvIaR7799fcdFyjA44Qy1P13ByouXQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "952078302451-r96qj2j3a66jffgimb0q99aq5t87jfjc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "952078302451-0a7oort8qv0uri7g8nve1p543qai9kqm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "sooq1alzour.sooq1alzour"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
