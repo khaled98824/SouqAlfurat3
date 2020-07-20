@@ -1,22 +1,48 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sooq1alzour/Auth/Register2.dart';
 import 'package:sooq1alzour/ui/Home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget{
+  bool autoLogin;
+  LoginScreen({this.autoLogin});
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginScreenState createState() => _LoginScreenState(autoLogin: autoLogin);
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool autoLogin  ;
+  _LoginScreenState({this.autoLogin});
 
   void initState()
   {
     super.initState();
+    if(autoLogin!=false){
+      autoLoginF();
+    }
   }
+  autoLoginF()async{
+    SharedPreferences sharedPref = await SharedPreferences.getInstance();
+    setState(() {
+      _passwordcontroller = TextEditingController(text: sharedPref.getString('password'));
+      _emailcontroller = TextEditingController(text: sharedPref.getString('email'));
+    });
 
+    Timer(Duration(milliseconds: 100),(){
+      login();
+    });
+  }
+  saveShared()async{
+    SharedPreferences sharedPref = await SharedPreferences.getInstance();
+    sharedPref.setString('email', _emailcontroller.text);
+    sharedPref.setString('password', _passwordcontroller.text);
+  }
   login()async{
+
     if(_formkey.currentState.validate()){
+      saveShared();
       var result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailcontroller.text, password: _passwordcontroller.text);
       if(result != null){
         Navigator.pushReplacement(
@@ -37,8 +63,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void dispose()
   {
-    _emailcontroller.dispose();
-    _passwordcontroller.dispose();
     super.dispose();
   }
 
@@ -113,8 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () async {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen2() ) );
                   },
-                )
-
+                ),
               ],
             )
         ),

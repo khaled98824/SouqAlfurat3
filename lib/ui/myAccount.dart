@@ -251,7 +251,7 @@ class _MyAccountFState extends State<MyAccountF> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) {
-                                        return LoginScreen();
+                                        return LoginScreen(autoLogin: false,);
                                       }));
                             });
                           },

@@ -21,6 +21,7 @@ DocumentSnapshot documentMessages;
 List<Widget> messages;
 TextEditingController messageController = TextEditingController();
 ScrollController scrollController = ScrollController();
+
 var adImagesUrl =List<dynamic>();
 bool showSlider=false;
 bool showBody=false;
@@ -106,6 +107,7 @@ class _ShowAdState extends State<ShowAd> {
                         child: Icon(Icons.arrow_forward_ios,size: 30,)),
                   ],
                 ),
+                SizedBox(height: 5,),
                 showSlider ?CarouselSlider(
                   items: adImagesUrl.map((url){
                     return Builder(
@@ -147,20 +149,29 @@ class _ShowAdState extends State<ShowAd> {
                             borderRadius: BorderRadius.circular(8),
                             color: Colors.blueAccent
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text('علق',textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontFamily: 'AmiriQuran',
-                                height: 0.7,
-                                color: Colors.white,
+                        child: InkWell(
+                          onTap: (){
+                            messageController.clear();
+                            scrollController.animateTo(
+                                scrollController.position.maxScrollExtent,
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeOut);
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text('علق',textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  fontFamily: 'AmiriQuran',
+                                  height: 0.7,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                            SizedBox(width: 12,),
-                            Icon(Icons.comment,color: Colors.white,),
-                          ],
+                              SizedBox(width: 12,),
+                              Icon(Icons.comment,color: Colors.white,),
+                            ],
+                          ),
                         ),
                       ),
                     ),InkWell(
@@ -204,7 +215,7 @@ class _ShowAdState extends State<ShowAd> {
                       ),
                     )),
                 Padding(
-                    padding: EdgeInsets.only(top: 1,bottom: 5,right: 10),
+                    padding: EdgeInsets.only(top: 4,bottom: 5,right: 10),
                     child: Text(documentsAds['time'],textAlign: TextAlign.right,
                       style: TextStyle(
                         fontSize: 13,
@@ -583,6 +594,7 @@ class Message extends StatelessWidget {
                 fontSize: 12,
                 color: Colors.blue[800]
               ),),
+              SizedBox(height: 2,),
               Material(
                 color: me ? Colors.teal[100] : Colors.white70,
                 borderRadius: BorderRadius.circular(5),

@@ -25,7 +25,7 @@ class SerchList extends StatelessWidget{
               borderRadius: BorderRadius.circular(swidth*0.045),
               child: Container(
                 width:swidth,
-                height: sheight*0.12,
+                height: sheight*0.15,
                 child: Card(
                   color: Colors.transparent,
                   elevation: 1,
@@ -36,7 +36,7 @@ class SerchList extends StatelessWidget{
                         right:0,
                         child: Container(
                           width:swidth,
-                          child: Image.network(lis["imagesUrl"][0],fit: BoxFit.fill,),
+                          child: Image.network(lis["imagesUrl"][0],fit: BoxFit.fill,height: 200,),
                         ),
                       ),
                       Positioned(
@@ -44,10 +44,10 @@ class SerchList extends StatelessWidget{
                         right: 2,
                         child: Container(
                             padding: EdgeInsets.all(swidth*0.018),
-                            height: sheight * 0.12,
+                            height: sheight * 0.08,
                             //width: MediaQuery.of(context).size.width*0.75,
                             decoration:  BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
                               color: Colors.black.withOpacity(0.5),
                               // set border width
                               // set rounded corner radius
@@ -56,9 +56,9 @@ class SerchList extends StatelessWidget{
                             child: Center(
                               child: Column(
                                 children: <Widget>[
-                                  Text(lis["name"],style: TextStyle(color: Colors.white,fontSize: sheight*0.018,fontWeight: FontWeight.bold),),
-                                  Text(lis["area"],style: TextStyle(color: Colors.white,fontSize: sheight*0.018,fontWeight: FontWeight.bold),),
-                                  Text("${lis["price"]}",style: TextStyle(color: Colors.white,fontSize: sheight*0.018,fontWeight: FontWeight.bold),),
+                                  Text(lis["name"],style: TextStyle(color: Colors.white,fontSize: sheight*0.014,fontWeight: FontWeight.bold),),
+                                  Text(lis["area"],style: TextStyle(color: Colors.white,fontSize: sheight*0.014,fontWeight: FontWeight.bold),),
+                                  Text("${lis["price"]}",style: TextStyle(color: Colors.white,fontSize: sheight*0.014,fontWeight: FontWeight.bold),),
                                 ],
                               ),
                             )
