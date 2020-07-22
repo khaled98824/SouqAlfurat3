@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sooq1alzour/Admin/Ads.dart';
 import 'package:sooq1alzour/Admin/Users.dart';
 import 'package:sooq1alzour/models/PageRoute.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'Comments.dart';
+import 'ComplaintsAndSuggestions.dart';
+
 
 class Admin extends StatefulWidget {
   @override
@@ -20,6 +25,14 @@ class _AdminState extends State<Admin> {
         body: Container(
           child: ListView(
             children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top: 30),
+                child: SpinKitCubeGrid(
+                  color: Colors.lightBlue,
+                  size: 77,
+                  duration: Duration(seconds: 3),
+                ),
+              ),
               Padding(padding: EdgeInsets.only(top: 200)),
               Container(
                 height: 1,
@@ -74,30 +87,35 @@ class _AdminState extends State<Admin> {
                   onTap: () {
 
                   },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        Icons.arrow_back_ios,
-                        size: 36,
-                      ),
-                      SizedBox(width: 100,),
-                      SizedBox(width: 100,),
-                      SizedBox(width: 22,),
-                      Padding(
-                        padding: EdgeInsets.only(right: 25),
-                        child: Text(
-                          'الإعلانات',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 24,
-                              fontFamily: 'AmiriQuran',
-                              height: 1),
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, BouncyPageRoute(widget: AdsAdmin()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(
+                          Icons.arrow_back_ios,
+                          size: 36,
                         ),
-                      ),
-                      Icon(Icons.burst_mode,color: Colors.blue,size: 34,)
-                    ],
+                        SizedBox(width: 100,),
+                        SizedBox(width: 100,),
+                        SizedBox(width: 22,),
+                        Padding(
+                          padding: EdgeInsets.only(right: 25),
+                          child: Text(
+                            'الإعلانات',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 24,
+                                fontFamily: 'AmiriQuran',
+                                height: 1),
+                          ),
+                        ),
+                        Icon(Icons.burst_mode,color: Colors.blue,size: 34,)
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -111,7 +129,9 @@ class _AdminState extends State<Admin> {
               Padding(
                 padding: EdgeInsets.only(top: 12, bottom: 12,right: 5),
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context, BouncyPageRoute(widget: CommentsAdmin()));
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -149,7 +169,9 @@ class _AdminState extends State<Admin> {
               Padding(
                 padding: EdgeInsets.only(top: 12, bottom: 12,right: 5),
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context, BouncyPageRoute(widget: ComplaintsAndSuggestions()));
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,

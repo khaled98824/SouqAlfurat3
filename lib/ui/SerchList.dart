@@ -22,7 +22,7 @@ class SerchList extends StatelessWidget{
 
               },
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(swidth*0.045),
+              borderRadius: BorderRadius.circular(swidth*0.050),
               child: Container(
                 width:swidth,
                 height: sheight*0.15,
@@ -35,7 +35,7 @@ class SerchList extends StatelessWidget{
                         top: 0,
                         right:0,
                         child: Container(
-                          width:swidth,
+                          width:200,
                           child: Image.network(lis["imagesUrl"][0],fit: BoxFit.fill,height: 200,),
                         ),
                       ),
@@ -43,8 +43,8 @@ class SerchList extends StatelessWidget{
                         bottom: sheight*0.005,
                         right: 2,
                         child: Container(
-                            padding: EdgeInsets.all(swidth*0.018),
-                            height: sheight * 0.08,
+                            padding: EdgeInsets.all(swidth*0.015),
+                            height: sheight * 0.07,
                             //width: MediaQuery.of(context).size.width*0.75,
                             decoration:  BoxDecoration(
                               borderRadius: BorderRadius.all(Radius.circular(10)),

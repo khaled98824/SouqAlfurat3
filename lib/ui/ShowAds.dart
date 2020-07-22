@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:intl/intl.dart';
 import 'package:sooq1alzour/models/PageRoute.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 class ShowAd extends StatefulWidget {
   String documentId;
@@ -36,8 +38,13 @@ class _ShowAdState extends State<ShowAd> {
     // TODO: implement initState
     super.initState();
    getDocumentValue();
+    getDocumentMessages();
   }
-
+  getDocumentMessages()async{
+    DocumentReference documentRefMessages =Firestore.instance.collection('messages').document();
+    documentMessages = await documentRefMessages.get();
+    _firestore.collection('messages').orderBy('date').snapshots();
+  }
   getDocumentValue()async{
         DocumentReference documentRef =Firestore.instance.collection('Ads').document(documentId);
         documentsAds = await documentRef.get();
@@ -51,9 +58,6 @@ class _ShowAdState extends State<ShowAd> {
         setState(() {
           showBody =true;
         });
-        DocumentReference documentRefMessages =Firestore.instance.collection('messages').document();
-        documentMessages = await documentRefMessages.get();
-        _firestore.collection('messages').orderBy('date').snapshots();
 
   }
   final Firestore _firestore = Firestore.instance;
@@ -65,7 +69,7 @@ class _ShowAdState extends State<ShowAd> {
         'from': currentUser.email,
         'date': DateFormat('yyyy-MM-dd-HH:mm').format(DateTime.now()),
         'name': documentsUser['name'],
-        'id':documentsAds.documentID
+        'Ad_id':documentsAds.documentID
       });
       setState(() {
 
@@ -120,7 +124,7 @@ class _ShowAdState extends State<ShowAd> {
                               child:Hero(
                                   tag: Text('imageAd'),
                                   child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
+                                      borderRadius: BorderRadius.circular(17),
                                       child: Image.network(url))),
                             ),
                           );
@@ -176,7 +180,7 @@ class _ShowAdState extends State<ShowAd> {
                       ),
                     ),InkWell(
                       onTap: (){
-                        print(messages);
+                        launch('tel:${documentsAds['phone']}');
                       },
                       child: Container(
                         width: 130,

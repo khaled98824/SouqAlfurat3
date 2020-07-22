@@ -10,6 +10,10 @@ import 'package:sooq1alzour/ui/ComplaintsAndSuggestions.dart';
 import 'package:sooq1alzour/ui/EditAd.dart';
 import 'AddNewAd.dart';
 import 'Home.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import 'ShowAds.dart';
+
 
 class MyAccount extends StatelessWidget {
   static const String id = "MyAccount";
@@ -112,6 +116,9 @@ class _MyAccountFState extends State<MyAccountF> {
                                             child: SizedBox(
                                               height: 65,
                                               child: ListTile(
+                                                onTap: (){
+                                                  Navigator.push(context, BouncyPageRoute(widget: ShowAd(documentId: snapshot.data.documents[index].documentID,)));
+                                                },
                                                 title: Text(
                                                   snapshot.data.documents[index]
                                                       ['name'],
@@ -122,7 +129,6 @@ class _MyAccountFState extends State<MyAccountF> {
                                                 ),
                                                 trailing: InkWell(
                                                     onTap: () {
-                                                      print(currentUserUid);
                                                       Navigator.push(
                                                           context,
                                                           BouncyPageRoute(
@@ -215,19 +221,32 @@ class _MyAccountFState extends State<MyAccountF> {
                         ),
                       ]),
                 )
-              :  Container(
-                    color: Colors.white,
-                    child: Center(
-                      child: Text(
-                        'Loading...',
-                        style: TextStyle(
-                            decoration: TextDecoration.none,
-                            fontSize: 40,
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
+              :  Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(padding: EdgeInsets.only(top: 70)),
+              Container(
+                color: Colors.white,
+                child: Center(
+                  child: Text(
+                    'Loading...',
+                    style: TextStyle(
+                        decoration: TextDecoration.none,
+                        fontSize: 37,
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold),
                   ),
+                ),
+              ),
+              SizedBox(height: 20,),
+              InkWell(
+                onTap: (){
+                  Navigator.of(context).pop();
+                },
+                  child: Icon(Icons.arrow_forward,color: Colors.blue,size: 55,))
+            ],
+          ),
           Column(
             children: <Widget>[
               Padding(padding: EdgeInsets.only(top: 40)),
@@ -831,20 +850,25 @@ class _ContactState extends State<Contact> {
                     borderRadius: BorderRadius.circular(4),
                     color: Colors.white
                   ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Text('khaled_salehalali@hotmail.com',style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'AmiriQuran',
-                          color: Colors.blue[900],
-                          ),),
+                  child: InkWell(
+                    onTap: (){
+                      launch('mailto:khaled_salehalali@hotmail.com');
+                    },
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Text('khaled_salehalali@hotmail.com',style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: 'AmiriQuran',
+                            color: Colors.blue[900],
+                            ),),
 
-                      Padding(
-                        padding: EdgeInsets.only(left: 40),
-                          child: Icon(Icons.email,color: Colors.blue,size: 40,))
-                    ],
+                        Padding(
+                          padding: EdgeInsets.only(left: 40),
+                            child: Icon(Icons.email,color: Colors.blue,size: 40,))
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -857,24 +881,29 @@ class _ContactState extends State<Contact> {
                       borderRadius: BorderRadius.circular(4),
                       color: Colors.white
                   ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Text(' 0096598824567 ',style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'AmiriQuran',
-                          color: Colors.blue[900],
-                          height: 1.5),),
-                      Text(':واتساب ',style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'AmiriQuran',
-                          color: Colors.blue[900],
-                          height: 1.5),),
-                      Padding(
-                        padding: EdgeInsets.only(left: 40),
-                          child: Icon(Icons.phone_iphone,color: Colors.blue,size: 40,))
-                    ],
+                  child: InkWell(
+                    onTap: (){
+                      launch('tel:0096598824567');
+                    },
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Text(' 0096598824567 ',style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: 'AmiriQuran',
+                            color: Colors.blue[900],
+                            height: 1.5),),
+                        Text(':واتساب ',style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: 'AmiriQuran',
+                            color: Colors.blue[900],
+                            height: 1.5),),
+                        Padding(
+                          padding: EdgeInsets.only(left: 40),
+                            child: Icon(Icons.phone_iphone,color: Colors.blue,size: 40,))
+                      ],
+                    ),
                   ),
                 ),
               ),

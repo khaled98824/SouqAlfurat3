@@ -429,7 +429,6 @@ class _SearchAreaDesignState extends State<SearchAreaDesign> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-       // Navigator.of(context).pushNamed(SearchUi.id);
         showSearch(context: context, delegate: SerchData());
       },
       child: Padding(

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sooq1alzour/models/PageRoute.dart';
-import 'package:sooq1alzour/ui/EditAd.dart';
+import 'package:sooq1alzour/Admin/SerchDataAdminUser.dart';
+
 
 class UsersAdmin extends StatefulWidget {
   @override
@@ -16,7 +16,7 @@ class _UsersAdminState extends State<UsersAdmin> {
           title: Text('Users Info'),
         ),
         body: StreamBuilder(
-          stream: Firestore.instance.collection('Ads').snapshots(),
+          stream: Firestore.instance.collection('users').snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData)
@@ -30,8 +30,9 @@ class _UsersAdminState extends State<UsersAdmin> {
               default:
                 return Stack(
                   children: <Widget>[
+
                     Padding(
-                        padding: EdgeInsets.only(top: 20),
+                        padding: EdgeInsets.only(top: 60),
                         child: ListView.builder(
                             itemCount: snapshot.data.documents.length,
                             itemBuilder: (BuildContext context, index) {
@@ -42,57 +43,61 @@ class _UsersAdminState extends State<UsersAdmin> {
                                   child: ListTile(
                                     title: Text(
                                       snapshot.data.documents[index]['name'],
-                                      textAlign: TextAlign.right,
+                                      textAlign: TextAlign.start,
                                       style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 15,
                                       ),
                                     ),
-                                    trailing: InkWell(
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              BouncyPageRoute(
-                                                  widget: EditAd(
-                                                documentId: snapshot
-                                                    .data
-                                                    .documents[index]
-                                                    .documentID,
-                                              )));
-                                        },
-                                        child: Icon(
-                                          Icons.mode_edit,
-                                          color: Colors.blue,
-                                          size: 32,
-                                        )),
+                                    trailing: Text(snapshot.data.documents[index]['user_uid'],style: TextStyle(
+                                      fontSize: 11
+                                    ),),
                                     subtitle: Text(
                                       snapshot.data.documents[index]['time'],
                                       style: TextStyle(
-                                        fontSize: 13,
+                                        fontSize: 11,
                                       ),
                                     ),
-                                    leading: InkWell(
-                                        onTap: () async {
-                                          Firestore.instance
-                                              .collection('Ads')
-                                              .document(snapshot.data
-                                                  .documents[index].documentID)
-                                              .delete()
-                                              .then((value) {
-                                            print('delete done');
-                                          });
-                                        },
-                                        child: Icon(
-                                          Icons.delete_forever,
-                                          color: Colors.red,
-                                        )),
+                                    leading:Text(snapshot.data.documents[index]['area'],style: TextStyle(
+                                      fontSize: 13
+                                    ),),
                                   ),
                                 ),
                               );
                             })),
-                    Column(
-                      children: <Widget>[
-                        Padding(padding: EdgeInsets.only(top: 40)),
-                      ],
+
+                    Positioned(
+                      right: 33,
+                      top: 10,
+                      child: InkWell(
+                        onTap: (){
+                          showSearch(context: context, delegate: SerchDataAdmin(collection: 'users'));
+                        },
+                        child: Container(
+                          height: 42,
+                          width: 340,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40), color: Colors.grey[350]),
+                          child: Stack(
+                            textDirection: TextDirection.rtl,
+                            alignment: Alignment(0.3, 0),
+                            children: <Widget>[
+                              Text('!... إبحث في قائمة المستخدمين',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 19,
+                                    fontFamily: 'AmiriQuran',
+                                    height: 1,
+                                  )),
+                              Align(
+                                  alignment: Alignment(0.9, 0),
+                                  child: Icon(
+                                    Icons.search,
+                                    size: 32,
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 );
