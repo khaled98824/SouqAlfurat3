@@ -198,7 +198,7 @@ class _HomeState extends State<Home> {
                                     text: "المعدات والشاحنات",
                                     imagePath: _listItem[6],
                                     callback: () {
-                                     Navigator.push(context, BouncyPageRoute(widget: Ads(department:"المعدات والشاحنات" ,category:"المعدات والشاحنات" ,)));
+                                     Navigator.push(context, BouncyPageRoute(widget: Ads(department:"االمعدات والشاحنات" ,category:"المعدات والشاحنات" ,)));
                                     },
                                   ),
                                   GridViewItems(
@@ -755,7 +755,7 @@ class _AllAdsState extends State<AllAds> {
                       crossAxisSpacing: 5,
                       mainAxisSpacing: 5,
                       childAspectRatio: 0.7,
-                      children: List.generate(2, (index) {
+                      children: List.generate(snapshot.data.documents.length<20?2:19, (index) {
                         return InkWell(
                           onTap: () {
                             print(index);

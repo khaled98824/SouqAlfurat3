@@ -245,8 +245,21 @@ class _CommentsAdminState extends State<CommentsAdmin> {
                           }
                       ),
                     ),
+                    Align(
+                      alignment: Alignment(-0.8, -1),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 14,horizontal: 19),
+                        child: Card(
+                          color: Colors.grey[200],
+                          elevation: 6,
+                          child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+                              child: Text("العدد ${snapshot.data.documents.length.toString()}")),
+                        ),
+                      ),
+                    ),
                     Positioned(
-                      right: 33,
+                      right: 10,
                       top: 10,
                       child: InkWell(
                         onTap: () {
@@ -256,17 +269,17 @@ class _CommentsAdminState extends State<CommentsAdmin> {
                         },
                         child: Container(
                           height: 42,
-                          width: 340,
+                          width: 280,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(40),
                               color: Colors.grey[350]),
                           child: Stack(
-                            alignment: Alignment(0.1, 0),
+                            alignment: Alignment(-0.2, 0),
                             children: <Widget>[
                               Text('!... إبحث في قائمة الشكاوى والإقتراحات',
                                   style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 16,
+                                    fontSize: 15,
                                     fontFamily: 'AmiriQuran',
                                     height: 1,
                                   )),
@@ -274,7 +287,7 @@ class _CommentsAdminState extends State<CommentsAdmin> {
                                   alignment: Alignment(0.9, 0),
                                   child: Icon(
                                     Icons.search,
-                                    size: 32,
+                                    size: 28,
                                   ))
                             ],
                           ),

@@ -16,6 +16,7 @@ class ShowAd extends StatefulWidget {
   _ShowAdState createState() =>
       _ShowAdState(documentId: documentId, indexDocument: indexDocument);
 }
+List<DocumentSnapshot> docs ;
 var  currectUser ;
 DocumentSnapshot documentsAds;
 DocumentSnapshot documentsUser;
@@ -38,13 +39,8 @@ class _ShowAdState extends State<ShowAd> {
     // TODO: implement initState
     super.initState();
    getDocumentValue();
-    getDocumentMessages();
   }
-  getDocumentMessages()async{
-    DocumentReference documentRefMessages =Firestore.instance.collection('messages').document();
-    documentMessages = await documentRefMessages.get();
-    _firestore.collection('messages').orderBy('date').snapshots();
-  }
+
   getDocumentValue()async{
         DocumentReference documentRef =Firestore.instance.collection('Ads').document(documentId);
         documentsAds = await documentRef.get();
@@ -106,7 +102,7 @@ class _ShowAdState extends State<ShowAd> {
                     SizedBox(width: 130,),
                     InkWell(
                         onTap: (){
-                          Navigator.pop(context);
+                          Navigator.of(context).pop();
                         },
                         child: Icon(Icons.arrow_forward_ios,size: 30,)),
                   ],
@@ -155,6 +151,7 @@ class _ShowAdState extends State<ShowAd> {
                         ),
                         child: InkWell(
                           onTap: (){
+
                             messageController.clear();
                             scrollController.animateTo(
                                 scrollController.position.maxScrollExtent,
@@ -457,14 +454,26 @@ class _ShowAdState extends State<ShowAd> {
                    Padding(
                     padding:EdgeInsets.only(top: 10,right: 10,left: 10),
                     child: StreamBuilder<QuerySnapshot>(
-                      stream: _firestore.collection("messages").where('id',isEqualTo:documentId ).orderBy('date').snapshots(),
+                      stream: _firestore.collection("messages").where('Ad_id',isEqualTo:documentId ).orderBy('date').snapshots(),
                       builder: (context, snapshot) {
                         if (!snapshot.hasData) {
                           return Center(
-                            child: CircularProgressIndicator(strokeWidth: 1,),
+                            child:Column(
+                              children: <Widget>[
+                                CircularProgressIndicator(strokeWidth: 1,),
+                                SizedBox(height: 8,),
+                                Text('!...لا توجد تعليقات ',style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: 'AmiriQuran',
+                                  height: 1,
+                                  color: Colors.grey[500],
+                                ),)
+                              ],
+                            )
+
                           );
                         }
-                        List<DocumentSnapshot> docs = snapshot.data.documents;
+                        docs = snapshot.data.documents;
                         List<Widget> messages = docs.map((doc) => Message(
                             from: doc.data["name"],
                             text: doc.data["text"],
@@ -522,6 +531,13 @@ class _ShowAdState extends State<ShowAd> {
       ):Text('Loading...')
 
     );
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    docs.clear();
+
   }
 }
 

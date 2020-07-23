@@ -6,6 +6,7 @@ import '../AddNewAd.dart';
 import '../AllAds.dart';
 import '../Home.dart';
 import '../SearchUi.dart';
+import '../SerchData.dart';
 import '../myAccount.dart';
 
 class CarsAndMotorCycles extends StatefulWidget {
@@ -42,8 +43,43 @@ class _CarsAndMotorCyclesState extends State<CarsAndMotorCycles> {
               children: <Widget>[
                 Padding(padding: EdgeInsets.only(top: 10)),
                 Heade(),
-                SearchArea(),
-                Padding(padding: EdgeInsets.only(top: 60)),
+                SizedBox(height: 12,),
+                InkWell(
+                  onTap: () {
+                    showSearch(
+                        context: context,
+                        delegate: SerchData(category: 'السيارات - الدراجات'));
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 30,left: 30),
+                    child: Container(
+                      height: 42,
+                      width: 340,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40),
+                          color: Colors.grey[350]),
+                      child: Stack(
+                        alignment: Alignment(0.1, 0),
+                        children: <Widget>[
+                          Text('!... إبحث  في قسم السيارات - الدراجات ',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontFamily: 'AmiriQuran',
+                                height: 1,
+                              )),
+                          Align(
+                              alignment: Alignment(0.9, 0),
+                              child: Icon(
+                                Icons.search,
+                                size: 32,
+                              ))
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(padding: EdgeInsets.only(top: 170)),
                 Container(
                   height:1,
                   width: MediaQuery.of(context).size.width - 8,

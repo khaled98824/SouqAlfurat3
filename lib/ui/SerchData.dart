@@ -5,8 +5,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sooq1alzour/ui/SerchList.dart';
 class SerchData extends SearchDelegate<String>{
+  String category ;
+  SerchData({this.category});
   Future<List<DocumentSnapshot>> _future() async{
-    QuerySnapshot querySnapshot=await Firestore.instance.collection("Ads").getDocuments();
+    QuerySnapshot querySnapshot=await Firestore.instance.collection("Ads").where('category',isEqualTo: category).getDocuments();
     final List<DocumentSnapshot> snap = querySnapshot.documents.where((DocumentSnapshot documentSnapshot) => documentSnapshot["description"].toString().toLowerCase().contains(query.toLowerCase())||documentSnapshot["category"].toString().toLowerCase().contains(query.toLowerCase())).toList();
     return snap;
   }

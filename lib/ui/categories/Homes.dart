@@ -8,6 +8,7 @@ import '../AddNewAd.dart';
 import '../AllAds.dart';
 import '../Home.dart';
 import '../SearchUi.dart';
+import '../SerchData.dart';
 import '../myAccount.dart';
 
 class Homes extends StatefulWidget {
@@ -46,7 +47,42 @@ class _HomesState extends State<Homes> {
               children: <Widget>[
                 Padding(padding: EdgeInsets.only(top: 10)),
                 Heade(),
-                SearchArea(),
+                SizedBox(height: 20,),
+                InkWell(
+                  onTap: () {
+                    showSearch(
+                        context: context,
+                        delegate: SerchData(category: 'المنزل'));
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 60,left: 60),
+                    child: Container(
+                      height: 42,
+                      width: 340,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40),
+                          color: Colors.grey[350]),
+                      child: Stack(
+                        alignment: Alignment(0.3, 0),
+                        children: <Widget>[
+                          Text('!... إبحث في في قسم المنزل',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontFamily: 'AmiriQuran',
+                                height: 1,
+                              )),
+                          Align(
+                              alignment: Alignment(0.9, 0),
+                              child: Icon(
+                                Icons.search,
+                                size: 32,
+                              ))
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
                 Padding(padding: EdgeInsets.only(top: 160)),
                 Container(
                   height:1,

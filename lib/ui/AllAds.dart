@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sooq1alzour/models/PageRoute.dart';
-import 'package:sooq1alzour/ui/SearchUi.dart';
+import 'package:sooq1alzour/ui/Home.dart';
 import 'package:sooq1alzour/ui/ShowAds.dart';
+
+import 'SerchData.dart';
 
 class Ads extends StatelessWidget {
   String department;
@@ -173,9 +175,54 @@ class _AdsFulState extends State<AdsFul> {
                       );
                     })),
               ),
+
                   Padding(
-                    padding: EdgeInsets.only(top: 70,),
-                      child: SearchArea()),
+                    padding: EdgeInsets.only(top: 80),
+                    child: InkWell(
+                      onTap: () {
+                        showSearch(
+                            context: context,
+                            delegate: SerchData(category: category));
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 44,left: 30),
+                        child: Container(
+                          height: 42,
+                          width: 340,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: Colors.grey[350]),
+                          child: Stack(
+                            alignment: Alignment(0, 0),
+                            children: <Widget>[
+                              Text('!... إبحث  في قسم $department',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontFamily: 'AmiriQuran',
+                                    height: 1,
+                                  )),
+                              Align(
+                                  alignment: Alignment(0.9, 0),
+                                  child: Icon(
+                                    Icons.search,
+                                    size: 32,
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                      alignment: Alignment(1, -0.9),
+                      child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 41,horizontal: 1),
+                          child: InkWell(
+                              onTap: (){
+                                Navigator.pushReplacement(context, BouncyPageRoute(widget: Home()));
+                              },
+                              child: Icon(Icons.arrow_forward_ios,size: 40,color: Colors.blue,)))),
                   Align(
                     alignment: Alignment(0, -0.9),
                     child: Text(department,style: TextStyle(

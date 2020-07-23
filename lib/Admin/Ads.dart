@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sooq1alzour/models/PageRoute.dart';
 import 'package:sooq1alzour/ui/EditAd.dart';
-
 import 'SerchAdsAdmin.dart';
-import 'SerchDataAdminUser.dart';
 
 class AdsAdmin extends StatefulWidget {
   @override
@@ -260,8 +258,21 @@ class _AdsAdminState extends State<AdsAdmin> {
                             );
                           })),
                     ),
+                    Align(
+                      alignment: Alignment(-0.8, -1),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 14,horizontal: 12),
+                        child: Card(
+                          elevation: 6,
+                          color: Colors.grey[200],
+                          child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+                              child: Text("العدد ${snapshot.data.documents.length.toString()}")),
+                        ),
+                      ),
+                    ),
                     Positioned(
-                      right: 33,
+                      right: 10,
                       top: 10,
                       child: InkWell(
                         onTap: () {
@@ -271,17 +282,17 @@ class _AdsAdminState extends State<AdsAdmin> {
                         },
                         child: Container(
                           height: 42,
-                          width: 340,
+                          width: 280,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(40),
                               color: Colors.grey[350]),
                           child: Stack(
-                            alignment: Alignment(0.3, 0),
+                            alignment: Alignment(0, 0),
                             children: <Widget>[
                               Text('!... إبحث في قائمة الإعلانات',
                                   style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 19,
+                                    fontSize: 17,
                                     fontFamily: 'AmiriQuran',
                                     height: 1,
                                   )),

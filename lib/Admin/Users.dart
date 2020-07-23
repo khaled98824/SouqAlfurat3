@@ -30,7 +30,19 @@ class _UsersAdminState extends State<UsersAdmin> {
               default:
                 return Stack(
                   children: <Widget>[
-
+                    Align(
+                      alignment: Alignment(-0.8, -1),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 14,horizontal: 12),
+                        child: Card(
+                          color: Colors.grey[200],
+                          elevation: 6,
+                          child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+                              child: Text("العدد ${snapshot.data.documents.length.toString()}")),
+                        ),
+                      ),
+                    ),
                     Padding(
                         padding: EdgeInsets.only(top: 60),
                         child: ListView.builder(
@@ -66,39 +78,43 @@ class _UsersAdminState extends State<UsersAdmin> {
                             })),
 
                     Positioned(
-                      right: 33,
+                      right: 10,
                       top: 10,
                       child: InkWell(
                         onTap: (){
                           showSearch(context: context, delegate: SerchDataAdmin(collection: 'users'));
                         },
-                        child: Container(
-                          height: 42,
-                          width: 340,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(40), color: Colors.grey[350]),
-                          child: Stack(
-                            textDirection: TextDirection.rtl,
-                            alignment: Alignment(0.3, 0),
-                            children: <Widget>[
-                              Text('!... إبحث في قائمة المستخدمين',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 19,
-                                    fontFamily: 'AmiriQuran',
-                                    height: 1,
-                                  )),
-                              Align(
-                                  alignment: Alignment(0.9, 0),
-                                  child: Icon(
-                                    Icons.search,
-                                    size: 32,
-                                  ))
-                            ],
+                        child: Padding(
+                          padding: EdgeInsets.only(bottom: 1),
+                          child: Container(
+                            height: 42,
+                            width: 280,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(40), color: Colors.grey[350]),
+                            child: Stack(
+                              textDirection: TextDirection.rtl,
+                              alignment: Alignment(0, 0),
+                              children: <Widget>[
+                                Text('!... إبحث في قائمة المستخدمين',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 17,
+                                      fontFamily: 'AmiriQuran',
+                                      height: 1,
+                                    )),
+                                Align(
+                                    alignment: Alignment(0.9, 0),
+                                    child: Icon(
+                                      Icons.search,
+                                      size: 32,
+                                    ))
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
+
                   ],
                 );
             }
