@@ -15,6 +15,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'myAccount.dart';
 import 'package:path/path.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
+import 'package:image_cropper/image_cropper.dart';
+
 
 
 class AddNewAd extends StatefulWidget {
@@ -289,38 +291,55 @@ class _AddNewAdState extends State<AddNewAd> {
       loadingImage = false;
     });
   }
-
+  File _image;
   Future getImage(context) async {
     imageG = await ImagePicker.pickImage(source: ImageSource.gallery);
     //File imageC = await ImagePicker.pickImage(source: ImageSource.camera);
 
+    File croppedFile = await ImageCropper.cropImage(
+      sourcePath: imageG.path,
+      maxWidth: 700,
+      maxHeight: 1400,
+    );
+    var result = await FlutterImageCompress.compressAndGetFile(
+      croppedFile.path,
+      imageG.path,
+
+      quality: 100,
+    );
+
+    setState(() {
+      _image = result;
+      print('compres:${_image.lengthSync()}');
+    });
+
     setState(() {
       if (image == null) {
-        image = imageG;
+        image = _image;
         loadingImage = true;
         uploadImage(context);
       } else if (image2 == null) {
-        image2 = imageG;
+        image2 = _image;
         loadingImage = true;
         uploadImage2(context);
       } else if (image3 == null) {
-        image3 = imageG;
+        image3 = _image;
         loadingImage = true;
         uploadImage3(context);
       } else if (image4 == null) {
-        image4 = imageG;
+        image4 = _image;
         loadingImage = true;
         uploadImage4(context);
       } else if (image5 == null) {
-        image5 = imageG;
+        image5 = _image;
         loadingImage = true;
         uploadImage5(context);
       } else if (image6 == null) {
-        image6 = imageG;
+        image6 = _image;
         loadingImage = true;
         uploadImage6(context);
       } else if (image7 == null) {
-        image7 = imageG;
+        image7 = _image;
         loadingImage = true;
         uploadImage7(context);
       }
