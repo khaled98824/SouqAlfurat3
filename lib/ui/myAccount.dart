@@ -12,7 +12,6 @@ import 'AddNewAd.dart';
 import 'Home.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'PrivacyPolicy.dart';
 import 'ShowAds.dart';
 
 class MyAccount extends StatelessWidget {
@@ -105,7 +104,7 @@ class _MyAccountFState extends State<MyAccountF> {
                           return Stack(
                             children: <Widget>[
                               Padding(
-                                  padding: EdgeInsets.only(top: 420),
+                                  padding: EdgeInsets.only(top:screenSizeHieght<895?443: 420),
                                   child: ListView.builder(
                                       itemCount: snapshot.data.documents.length,
                                       itemBuilder:
@@ -113,7 +112,7 @@ class _MyAccountFState extends State<MyAccountF> {
                                         return Card(
                                           elevation: 5,
                                           child: SizedBox(
-                                            height: 65,
+                                            height: 58,
                                             child: ListTile(
                                               onTap: () {
                                                 Navigator.push(
@@ -230,7 +229,7 @@ class _MyAccountFState extends State<MyAccountF> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Padding(padding: EdgeInsets.only(top: 110)),
+                    Padding(padding: EdgeInsets.only(top:screenSizeHieght>750 ?110:300)),
                     Container(
                       color: Colors.white,
                       child: Center(
@@ -317,9 +316,9 @@ class _MyAccountFState extends State<MyAccountF> {
             ],
           ),
           Align(
-              alignment: Alignment(0.9, 0.1),
+              alignment: Alignment(0.9,screenSizeHieght>750? 0.1:0.4),
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 150, horizontal: 1),
+                padding: EdgeInsets.symmetric(vertical:screenSizeHieght>750? 150:70, horizontal: 1),
                 child: Text(
                   'إعلاناتي',
                   style: TextStyle(
@@ -348,7 +347,7 @@ class _MyAccountFState extends State<MyAccountF> {
                                 children: <Widget>[
                                   CircleAvatar(
                                     backgroundColor: Colors.red,
-                                    radius: 30,
+                                    radius: 27,
                                     child: Icon(
                                       Icons.perm_identity,
                                       size: 35,
@@ -361,7 +360,7 @@ class _MyAccountFState extends State<MyAccountF> {
                                 ],
                               ),
                               SizedBox(
-                                height: 5,
+                                height: 3,
                               ),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -387,7 +386,7 @@ class _MyAccountFState extends State<MyAccountF> {
                             ],
                           ),
                           SizedBox(
-                            height: 14,
+                            height: 9,
                           ),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
@@ -418,7 +417,7 @@ class _MyAccountFState extends State<MyAccountF> {
                             ],
                           ),
                           SizedBox(
-                            height: 3,
+                            height: 2,
                           ),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
@@ -449,7 +448,7 @@ class _MyAccountFState extends State<MyAccountF> {
                             ],
                           ),
                           SizedBox(
-                            height: 5,
+                            height: 2,
                           ),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
@@ -505,7 +504,7 @@ class _MyAccountFState extends State<MyAccountF> {
                                     width: 50,
                                   ),
                                   SizedBox(
-                                    width: 50,
+                                    width: 40,
                                   ),
                                   SizedBox(
                                     width: 70,
@@ -563,10 +562,10 @@ class _MyAccountFState extends State<MyAccountF> {
                                     width: 50,
                                   ),
                                   SizedBox(
-                                    width: 70,
+                                    width: 60,
                                   ),
                                   SizedBox(
-                                    width: 70,
+                                    width: 60,
                                   ),
                                   SizedBox(
                                     width: 50,
@@ -623,13 +622,13 @@ class _MyAccountFState extends State<MyAccountF> {
                                     width: 50,
                                   ),
                                   SizedBox(
-                                    width: 50,
+                                    width: 40,
                                   ),
                                   SizedBox(
                                     width: 40,
                                   ),
                                   SizedBox(
-                                    width: 50,
+                                    width: 40,
                                   ),
                                   Text('الشكاوى والإقتراحات',
                                       textAlign: TextAlign.right,
@@ -680,7 +679,7 @@ class _MyAccountFState extends State<MyAccountF> {
                                     width: 20,
                                   ),
                                   SizedBox(
-                                    width: 20,
+                                    width: 10,
                                   ),
                                   SizedBox(
                                     width: 20,
@@ -740,7 +739,7 @@ class _MyAccountFState extends State<MyAccountF> {
                                     width: 60,
                                   ),
                                   SizedBox(
-                                    width: 70,
+                                    width: 60,
                                   ),
                                   SizedBox(
                                     width: 70,

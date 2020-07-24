@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:sooq1alzour/Auth/Login.dart';
 import 'package:sooq1alzour/models/PageRoute.dart';
 
 import '../AddNewAd.dart';
@@ -54,7 +55,7 @@ class _FoodState extends State<Food> {
                         delegate: SerchData(category: 'أطعمة'));
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(right: 60,left: 60),
+                    padding: EdgeInsets.only(right: 50,left: 50),
                     child: Container(
                       height: 42,
                       width: 340,
@@ -62,9 +63,9 @@ class _FoodState extends State<Food> {
                           borderRadius: BorderRadius.circular(40),
                           color: Colors.grey[350]),
                       child: Stack(
-                        alignment: Alignment(0.4, 0),
+                        alignment: Alignment(screenSizeWidth<412?-0.1:0.1, 0),
                         children: <Widget>[
-                          Text('!... إبحث في في قسم الأطعمة',
+                          Text('!... إبحث في قسم الأطعمة',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,

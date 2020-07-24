@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sooq1alzour/Auth/Register2.dart';
+import 'package:sooq1alzour/models/StaticVirables.dart';
 import 'package:sooq1alzour/ui/Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,7 +12,8 @@ class LoginScreen extends StatefulWidget{
   @override
   _LoginScreenState createState() => _LoginScreenState(autoLogin: autoLogin);
 }
-
+double screenSizeWidth ;
+double screenSizeHieght;
 class _LoginScreenState extends State<LoginScreen> {
   bool autoLogin  ;
   _LoginScreenState({this.autoLogin});
@@ -23,6 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
       autoLoginF();
     }
   }
+
   autoLoginF()async{
     SharedPreferences sharedPref = await SharedPreferences.getInstance();
     setState(() {
@@ -69,6 +72,10 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    screenSizeWidth = MediaQuery.of(context).size.width;
+    screenSizeHieght = MediaQuery.of(context).size.height;
+    Virables.screenSizeWidth = screenSizeWidth ;
+    Virables.screenSizeHeight = screenSizeHieght;
     return Scaffold(
 
       body: Container(

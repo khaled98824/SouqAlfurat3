@@ -63,7 +63,7 @@ class _ClothesState extends State<Clothes> {
                       child: Stack(
                         alignment: Alignment(0.1, 0),
                         children: <Widget>[
-                          Text('!... إبحث في في قسم الألبسة',
+                          Text('!... إبحث في قسم الألبسة',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
@@ -74,7 +74,7 @@ class _ClothesState extends State<Clothes> {
                               alignment: Alignment(0.9, 0),
                               child: Icon(
                                 Icons.search,
-                                size: 32,
+                                size: 30,
                               ))
                         ],
                       ),

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:sooq1alzour/Auth/Login.dart';
 import 'package:sooq1alzour/models/PageRoute.dart';
 import 'package:sooq1alzour/ui/Home.dart';
 import 'package:sooq1alzour/ui/SearchUi.dart';
@@ -54,7 +55,7 @@ class _OccupationsAndServicesState extends State<OccupationsAndServices> {
                         delegate: SerchData(category: 'مهن وخدمات'));
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(right: 60,left: 60),
+                    padding: EdgeInsets.only(right: 50,left: 50),
                     child: Container(
                       height: 42,
                       width: 340,
@@ -62,9 +63,9 @@ class _OccupationsAndServicesState extends State<OccupationsAndServices> {
                           borderRadius: BorderRadius.circular(40),
                           color: Colors.grey[350]),
                       child: Stack(
-                        alignment: Alignment(0.1, 0),
+                        alignment: Alignment(screenSizeWidth<412?-0.2:0.1, 0),
                         children: <Widget>[
-                          Text('!... إبحث في في قسم مهن وخدمات',
+                          Text('!... إبحث في قسم مهن وخدمات',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
@@ -75,14 +76,14 @@ class _OccupationsAndServicesState extends State<OccupationsAndServices> {
                               alignment: Alignment(0.9, 0),
                               child: Icon(
                                 Icons.search,
-                                size: 32,
+                                size: 30,
                               ))
                         ],
                       ),
                     ),
                   ),
                 ),
-                Padding(padding: EdgeInsets.only(top: 160)),
+                Padding(padding: EdgeInsets.only(top: 50)),
                 Container(
                   height:1,
                   width: MediaQuery.of(context).size.width - 8,

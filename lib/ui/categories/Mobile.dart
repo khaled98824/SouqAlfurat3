@@ -54,7 +54,7 @@ class _MobileState extends State<Mobile> {
                         delegate: SerchData(category: 'الموبايل'));
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(right: 60,left: 60),
+                    padding: EdgeInsets.only(right: 50,left: 50),
                     child: Container(
                       height: 42,
                       width: 340,
@@ -64,7 +64,7 @@ class _MobileState extends State<Mobile> {
                       child: Stack(
                         alignment: Alignment(0.3, 0),
                         children: <Widget>[
-                          Text('!... إبحث في في قسم الموبايل',
+                          Text('!... إبحث في قسم الموبايل',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
@@ -75,14 +75,14 @@ class _MobileState extends State<Mobile> {
                               alignment: Alignment(0.9, 0),
                               child: Icon(
                                 Icons.search,
-                                size: 32,
+                                size: 30,
                               ))
                         ],
                       ),
                     ),
                   ),
                 ),
-                Padding(padding: EdgeInsets.only(top: 160)),
+                Padding(padding: EdgeInsets.only(top: 100)),
                 Container(
                   height:1,
                   width: MediaQuery.of(context).size.width - 8,

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:sooq1alzour/Auth/Login.dart';
 import 'package:sooq1alzour/models/PageRoute.dart';
 import 'package:sooq1alzour/ui/Home.dart';
 import 'package:sooq1alzour/ui/ShowAds.dart';
@@ -58,12 +59,12 @@ class _AdsFulState extends State<AdsFul> {
               return Stack(
                 children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 100),
+                padding: EdgeInsets.only(top: 106),
                 child: GridView.count(
                 crossAxisCount: 2,
                     crossAxisSpacing: 5,
                     mainAxisSpacing: 5,
-                    childAspectRatio: 0.7,
+                    childAspectRatio:screenSizeHieght <895?0.6: 0.7,
                     children:
                     List.generate(snapshot.data.documents.length, (index) {
                       return InkWell(
@@ -217,10 +218,10 @@ class _AdsFulState extends State<AdsFul> {
                   Align(
                       alignment: Alignment(1, -0.9),
                       child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 41,horizontal: 1),
+                          padding: EdgeInsets.symmetric(vertical:screenSizeHieght <890? 54:41,horizontal: 1),
                           child: InkWell(
                               onTap: (){
-                                Navigator.pushReplacement(context, BouncyPageRoute(widget: Home()));
+                                Navigator.of(context).pop();
                               },
                               child: Icon(Icons.arrow_forward_ios,size: 40,color: Colors.blue,)))),
                   Align(

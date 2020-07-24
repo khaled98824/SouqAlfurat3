@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:sooq1alzour/Auth/Login.dart';
 import 'package:sooq1alzour/models/PageRoute.dart';
 import '../AddNewAd.dart';
 import '../AllAds.dart';
@@ -59,7 +60,7 @@ class _CarsAndMotorCyclesState extends State<CarsAndMotorCycles> {
                           borderRadius: BorderRadius.circular(40),
                           color: Colors.grey[350]),
                       child: Stack(
-                        alignment: Alignment(0.1, 0),
+                        alignment: Alignment(screenSizeWidth<412?-0.3:0.1, 0),
                         children: <Widget>[
                           Text('!... إبحث  في قسم السيارات - الدراجات ',
                               style: TextStyle(
@@ -72,14 +73,14 @@ class _CarsAndMotorCyclesState extends State<CarsAndMotorCycles> {
                               alignment: Alignment(0.9, 0),
                               child: Icon(
                                 Icons.search,
-                                size: 32,
+                                size: 28,
                               ))
                         ],
                       ),
                     ),
                   ),
                 ),
-                Padding(padding: EdgeInsets.only(top: 170)),
+                Padding(padding: EdgeInsets.only(top: 150)),
                 Container(
                   height:1,
                   width: MediaQuery.of(context).size.width - 8,

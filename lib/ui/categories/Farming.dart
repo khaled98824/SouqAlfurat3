@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:sooq1alzour/Auth/Login.dart';
 import 'package:sooq1alzour/models/PageRoute.dart';
 
 import '../AddNewAd.dart';
@@ -53,7 +54,7 @@ class _Farming1State extends State<Farming1> {
                         delegate: SerchData(category: 'الزراعة'));
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(right: 60,left: 60),
+                    padding: EdgeInsets.only(right: 50,left: 50),
                     child: Container(
                       height: 42,
                       width: 340,
@@ -61,9 +62,9 @@ class _Farming1State extends State<Farming1> {
                           borderRadius: BorderRadius.circular(40),
                           color: Colors.grey[350]),
                       child: Stack(
-                        alignment: Alignment(0.4, 0),
+                        alignment: Alignment(screenSizeWidth<412?-0.1:0.1, 0),
                         children: <Widget>[
-                          Text('!... إبحث في في قسم الزراعة',
+                          Text('!... إبحث في قسم الزراعة',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
@@ -74,14 +75,14 @@ class _Farming1State extends State<Farming1> {
                               alignment: Alignment(0.9, 0),
                               child: Icon(
                                 Icons.search,
-                                size: 32,
+                                size: 30,
                               ))
                         ],
                       ),
                     ),
                   ),
                 ),
-                Padding(padding: EdgeInsets.only(top: 160)),
+                Padding(padding: EdgeInsets.only(top: 130)),
                 Container(
                   height:1,
                   width: MediaQuery.of(context).size.width - 8,

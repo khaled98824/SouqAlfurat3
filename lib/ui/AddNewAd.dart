@@ -14,6 +14,8 @@ import 'package:sooq1alzour/ui/Home.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'myAccount.dart';
 import 'package:path/path.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
+
 
 class AddNewAd extends StatefulWidget {
   static const String id = "AddNewAd";

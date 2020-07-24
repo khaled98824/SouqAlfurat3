@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:sooq1alzour/Auth/Login.dart';
 import 'package:sooq1alzour/models/AdsModel.dart';
 import 'package:sooq1alzour/models/PageRoute.dart';
 import 'package:sooq1alzour/ui/AddNewAd.dart';
@@ -18,7 +19,6 @@ import 'package:sooq1alzour/ui/categories/Homes.dart';
 import 'package:sooq1alzour/ui/categories/Livestocks.dart';
 import 'package:sooq1alzour/ui/categories/Mobile.dart';
 import 'package:sooq1alzour/ui/categories/OccupationsAndServices.dart';
-import 'SearchUi.dart';
 import 'myAccount.dart';
 
 class Home extends StatefulWidget {
@@ -26,7 +26,6 @@ class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
-
 List<AdsModel> allList = List();
 var icons1 = Icons.burst_mode;
 var icons2 = Icons.home;
@@ -77,7 +76,7 @@ class _HomeState extends State<Home> {
           body: SafeArea(
               child: Column(
             children: <Widget>[
-              Padding(padding: EdgeInsets.only(top: 5)),
+              Padding(padding: EdgeInsets.only(top: 1)),
               Heade(),
               SizedBox(
                 height: 10,
@@ -120,7 +119,7 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
-              Padding(padding: EdgeInsets.only(top: 45)),
+              Padding(padding: EdgeInsets.only(top: 60)),
               categoryOrAds
                   ? Expanded(
                       child: SingleChildScrollView(
@@ -332,7 +331,7 @@ class _HomeState extends State<Home> {
         Align(
           alignment: Alignment(1, 1),
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 48),
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal:screenSizeWidth<400?38: 49),
             child: Text(
               'الرئيسية',
               style: TextStyle(
@@ -347,7 +346,7 @@ class _HomeState extends State<Home> {
         Align(
           alignment: Alignment(-1, 1),
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 53),
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal:screenSizeWidth<400?40: 51),
             child: Text(
               'حسابي',
               style: TextStyle(
@@ -393,17 +392,18 @@ Widget Heade() {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          Padding(padding: EdgeInsets.only(left: 1)),
           Text(
-            '  سوق الزور',
+            'بيع واشتري كل ما تريد بكل سهولة',
             style: TextStyle(
               color: Colors.black,
-              fontSize: 28,
+              fontSize: 18,
               fontFamily: 'AmiriQuran',
               height: 1,
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(right: 3),
+            padding: EdgeInsets.only(right: 10),
             child: Container(
               width: 80,
               height: 40,
@@ -434,7 +434,7 @@ class _SearchAreaDesignState extends State<SearchAreaDesign> {
       child: Padding(
         padding: EdgeInsets.only(right: 10, left: 10),
         child: Container(
-          height: 42,
+          height: 40,
           width: 340,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(40), color: Colors.grey[350]),
@@ -445,7 +445,7 @@ class _SearchAreaDesignState extends State<SearchAreaDesign> {
               Text('!... إبحث في سوق الزور',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 22,
+                    fontSize: 20,
                     fontFamily: 'AmiriQuran',
                     height: 1,
                   )),
@@ -453,7 +453,7 @@ class _SearchAreaDesignState extends State<SearchAreaDesign> {
                   alignment: Alignment(0.9, 0),
                   child: Icon(
                     Icons.search,
-                    size: 32,
+                    size: 30,
                   ))
             ],
           ),
@@ -553,7 +553,7 @@ class ButtonTapped extends StatelessWidget {
               BoxShadow(
                   color: Colors.white,
                   offset: Offset(-4.0, -4.0),
-                  blurRadius: 15.0,
+                  blurRadius: 10.0,
                   spreadRadius: 1.0),
             ],
             gradient: LinearGradient(
@@ -638,7 +638,7 @@ class MyButton extends StatelessWidget {
               BoxShadow(
                   color: Colors.grey[600],
                   offset: Offset(4.0, 4.0),
-                  blurRadius: 15.0,
+                  blurRadius: 10.0,
                   spreadRadius: 1.0),
               BoxShadow(
                   color: Colors.white,
@@ -685,7 +685,7 @@ class GridViewItems extends StatelessWidget {
         elevation: 0,
         color: Colors.white,
         child: SizedBox(
-          width: 190,
+          width: screenSizeWidth>395?190:172,
           height: 200,
           child: Container(
             width: 100,
@@ -710,7 +710,7 @@ class GridViewItems extends StatelessWidget {
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 18,
+                          fontSize: 16,
                           fontFamily: 'AmiriQuran',
                           height: 0.5,
                         ),
@@ -754,7 +754,7 @@ class _AllAdsState extends State<AllAds> {
                       crossAxisCount: 2,
                       crossAxisSpacing: 5,
                       mainAxisSpacing: 5,
-                      childAspectRatio: 0.7,
+                      childAspectRatio:screenSizeHieght>800? 0.7:0.6,
                       children: List.generate(snapshot.data.documents.length<20?2:19, (index) {
                         return InkWell(
                           onTap: () {
