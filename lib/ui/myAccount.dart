@@ -316,9 +316,9 @@ class _MyAccountFState extends State<MyAccountF> {
             ],
           ),
           Align(
-              alignment: Alignment(0.9,screenSizeHieght>750? 0.1:0.4),
+              alignment: Alignment(0.9,screenSizeHieght>750? 0:0.4),
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical:screenSizeHieght>750? 150:70, horizontal: 1),
+                padding: EdgeInsets.symmetric(vertical:screenSizeHieght>750? 170:70, horizontal: 1),
                 child: Text(
                   'إعلاناتي',
                   style: TextStyle(

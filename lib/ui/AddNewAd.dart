@@ -298,7 +298,7 @@ class _AddNewAdState extends State<AddNewAd> {
 
     File croppedFile = await ImageCropper.cropImage(
       sourcePath: imageG.path,
-      maxWidth: 700,
+      maxWidth: 800,
       maxHeight: 1400,
     );
     var result = await FlutterImageCompress.compressAndGetFile(
