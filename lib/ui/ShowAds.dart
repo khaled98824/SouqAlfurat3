@@ -89,6 +89,7 @@ class _ShowAdState extends State<ShowAd> {
   final Firestore _firestore = Firestore.instance;
   Future<void> callBack() async {
     DocumentReference documentRef;
+
     var currentUser = await FirebaseAuth.instance.currentUser();
     if (messageController.text.length > 0){
       Messgetext=messageController.text;
@@ -106,7 +107,7 @@ class _ShowAdState extends State<ShowAd> {
       print("token"+documentsUser.data['token']);
       print(documentsAds.data['uid']);
       print(documentsUser.documentID);
-      if(documentsAds.data['uid']!=documentsUser.documentID){
+      if(documentsAds.data['uid']!=currentUser.uid){
         makePostRequest(documentsUser.data['token'],documentsAds.data['name']);
       }
 
