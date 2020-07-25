@@ -1,7 +1,11 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get_it/get_it.dart';
 import 'package:sooq1alzour/Auth/Register2.dart';
+import 'package:sooq1alzour/Service/PushNotificationService.dart';
 import 'package:sooq1alzour/models/StaticVirables.dart';
 import 'package:sooq1alzour/ui/Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,6 +19,7 @@ class LoginScreen extends StatefulWidget{
 double screenSizeWidth ;
 double screenSizeHieght;
 class _LoginScreenState extends State<LoginScreen> {
+  final PushNotificationService _pushNotificationService=GetIt.I<PushNotificationService>();
   bool autoLogin  ;
   _LoginScreenState({this.autoLogin});
 
@@ -43,11 +48,17 @@ class _LoginScreenState extends State<LoginScreen> {
     sharedPref.setString('password', _passwordcontroller.text);
   }
   login()async{
-
+    FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
     if(_formkey.currentState.validate()){
       saveShared();
       var result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailcontroller.text, password: _passwordcontroller.text);
       if(result != null){
+        _firebaseMessaging.getToken().then((token) async {
+          await _pushNotificationService.initialise();
+          print("token: "+token);
+          Firestore.instance.collection('users').document(result.user.uid).updateData({
+            "token":token,
+          });});
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => Home()),

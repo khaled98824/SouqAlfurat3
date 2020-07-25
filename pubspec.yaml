@@ -30,12 +30,8 @@ dependencies:
   cupertino_icons: ^0.1.3
   curved_navigation_bar: ^0.3.3
   image_picker: ^0.6.7+3
-  firebase_database: ^3.1.6
-  firebase_storage: ^3.1.6
-  cloud_firestore:
   device_info:
   flutter_spinkit:
-  firebase_auth:
   carousel_pro: ^1.0.0
   carousel_slider: ^2.2.1
   intl: ^0.16.1
@@ -43,6 +39,14 @@ dependencies:
   url_launcher: ^5.5.0
   flutter_image_compress: ^0.7.0
   image_cropper:
+  get_it: ^4.0.2
+  flutter_local_notifications: ^1.4.4+2
+  firebase_auth: ^0.16.1
+  firebase_core: ^0.4.5
+  firebase_database: ^3.1.6
+  firebase_storage: ^3.1.6
+  firebase_messaging: ^6.0.16
+  cloud_firestore: ^0.13.7
 
 
 dev_dependencies:
