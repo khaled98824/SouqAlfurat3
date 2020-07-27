@@ -5,7 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
+import 'package:sooq1alzour/Service/PushNotificationService.dart';
 import 'package:sooq1alzour/models/PageRoute.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart';
@@ -33,6 +35,7 @@ bool showSlider=false;
 bool showBody=false;
 
 class _ShowAdState extends State<ShowAd> {
+  final PushNotificationService _pushNotificationService=GetIt.I<PushNotificationService>();
   String Messgetext;
   String documentId;
   int indexDocument;
@@ -62,6 +65,7 @@ class _ShowAdState extends State<ShowAd> {
   }
 
   makePostRequest(token1,AdsN) async {
+    //_pushNotificationService.initialise();
     currectUser = await FirebaseAuth.instance.currentUser();
     DocumentReference documentRefUser =Firestore.instance.collection('users').document(currectUser.uid);
     documentsUser = await documentRefUser.get();
@@ -105,7 +109,7 @@ class _ShowAdState extends State<ShowAd> {
       documentRef =Firestore.instance.collection('users').document(documentsAds.data['uid']);
       documentsUser = await documentRef.get();
       print("token"+documentsUser.data['token']);
-      print(documentsAds.data['uid']);
+      print(currentUser.uid);
       print(documentsUser.documentID);
       if(documentsAds.data['uid']!=currentUser.uid){
         makePostRequest(documentsUser.data['token'],documentsAds.data['name']);

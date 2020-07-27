@@ -3,7 +3,9 @@ import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:sooq1alzour/Auth/Login.dart';
+import 'package:sooq1alzour/Service/PushNotificationService.dart';
 import 'package:sooq1alzour/models/AdsModel.dart';
 import 'package:sooq1alzour/models/PageRoute.dart';
 import 'package:sooq1alzour/ui/AddNewAd.dart';
@@ -44,6 +46,7 @@ final List<String> _listItem = [
 bool categoryOrAds = true;
 
 class _HomeState extends State<Home> {
+  final PushNotificationService _pushNotificationService=GetIt.I<PushNotificationService>();
   bool buttonPressed1 = false;
   bool buttonPressed2 = false;
   void _letsPress1() {
@@ -66,6 +69,7 @@ class _HomeState extends State<Home> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _pushNotificationService.initialise();
   }
   @override
   Widget build(BuildContext context) {

@@ -19,7 +19,6 @@ class LoginScreen extends StatefulWidget{
 double screenSizeWidth ;
 double screenSizeHieght;
 class _LoginScreenState extends State<LoginScreen> {
-  final PushNotificationService _pushNotificationService=GetIt.I<PushNotificationService>();
   bool autoLogin  ;
   _LoginScreenState({this.autoLogin});
 
@@ -54,7 +53,6 @@ class _LoginScreenState extends State<LoginScreen> {
       var result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailcontroller.text, password: _passwordcontroller.text);
       if(result != null){
         _firebaseMessaging.getToken().then((token) async {
-          await _pushNotificationService.initialise();
           print("token: "+token);
           Firestore.instance.collection('users').document(result.user.uid).updateData({
             "token":token,
