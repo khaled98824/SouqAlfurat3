@@ -1,13 +1,15 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:intl/intl.dart';
-import 'package:photo_view/photo_view_gallery.dart';
 import 'package:sooq1alzour/models/PageRoute.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:photo_view/photo_view.dart';
+import 'package:http/http.dart';
+
 
 class ShowAd extends StatefulWidget {
   String documentId;
@@ -31,6 +33,7 @@ bool showSlider=false;
 bool showBody=false;
 
 class _ShowAdState extends State<ShowAd> {
+  String Messgetext;
   String documentId;
   int indexDocument;
   _ShowAdState({this.documentId, this.indexDocument});
@@ -57,17 +60,57 @@ class _ShowAdState extends State<ShowAd> {
         });
 
   }
+
+  makePostRequest(token1,AdsN) async {
+    currectUser = await FirebaseAuth.instance.currentUser();
+    DocumentReference documentRefUser =Firestore.instance.collection('users').document(currectUser.uid);
+    documentsUser = await documentRefUser.get();
+    print("enter");
+    final key1='AAAA3axJ_PM:APA91bF-QTmmVGRzpPvqvaE3xioEvuaBkGmj8JT2aG-puw3_83aSBnEdC5n8RGj78a1n_996CbwbVpk8OxYumCPP8vBAA7ykx7BrXXETkSU-EiySB2hD96Gx8JHsRnbXgyXp2-H9Qk29';
+    final uri = 'https://fcm.googleapis.com/fcm/send';
+    final headers = {'Content-Type': 'application/json',HttpHeaders.authorizationHeader:"key="+key1};
+    Map<String, dynamic> title ={'title': "${documentsUser.data['name']} علق على  ${AdsN}","Mess":"${Messgetext}"};
+    Map<String, dynamic> body = {'data': title,"to":token1};
+    String jsonBody = json.encode(body);
+    final encoding = Encoding.getByName('utf-8');
+
+    Response response = await post(
+      uri,
+      headers: headers,
+      body: jsonBody,
+      encoding: encoding,
+    );
+
+    int statusCode = response.statusCode;
+    String responseBody = response.body;
+    print(statusCode);
+    print(responseBody);
+  }
   final Firestore _firestore = Firestore.instance;
   Future<void> callBack() async {
+    DocumentReference documentRef;
+
     var currentUser = await FirebaseAuth.instance.currentUser();
     if (messageController.text.length > 0){
+      Messgetext=messageController.text;
       await _firestore.collection("messages").add({
-        'text': messageController.text,
+        'text': Messgetext,
         'from': currentUser.email,
         'date': DateFormat('yyyy-MM-dd-HH:mm').format(DateTime.now()),
         'name': documentsUser['name'],
         'Ad_id':documentsAds.documentID
       });
+      documentRef =Firestore.instance.collection('Ads').document(documentId);
+      documentsAds = await documentRef.get();
+      documentRef =Firestore.instance.collection('users').document(documentsAds.data['uid']);
+      documentsUser = await documentRef.get();
+      print("token"+documentsUser.data['token']);
+      print(documentsAds.data['uid']);
+      print(documentsUser.documentID);
+      if(documentsAds.data['uid']!=currentUser.uid){
+        makePostRequest(documentsUser.data['token'],documentsAds.data['name']);
+      }
+
       setState(() {
 
       });
@@ -109,7 +152,7 @@ class _ShowAdState extends State<ShowAd> {
                   ],
                 ),
                 SizedBox(height: 5,),
-                showSlider ? CarouselSlider(
+                showSlider ?CarouselSlider(
                   items: adImagesUrl.map((url){
                     return Builder(
                         builder: (BuildContext context){
@@ -134,8 +177,7 @@ class _ShowAdState extends State<ShowAd> {
                       autoPlayAnimationDuration: Duration(milliseconds: 900),
                       disableCenter:false,
                       height: 230
-                  ),)
-                    :Container(),
+                  ),):Container(),
                 SizedBox(height: 5,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -562,27 +604,12 @@ class _PageImageState extends State<PageImage> {
         height: 1,
         color: Colors.white,
       ),),),
-      body:SizedBox(
-        height: 700,
-        child: PhotoViewGallery.builder(
-          itemCount: adImagesUrl.length,
-          builder: (BuildContext context, index){
-            return PhotoViewGalleryPageOptions(
-
-                imageProvider: NetworkImage(adImagesUrl[index],
-                ),
-                maxScale: PhotoViewComputedScale.covered*2,
-                minScale: PhotoViewComputedScale.contained*0.8
-            );
-          },
-          scrollPhysics: BouncingScrollPhysics(),
-          backgroundDecoration: BoxDecoration(
-            color: Theme.of(context).canvasColor,
-          ),
-          loadingChild: Center(
-            child: CircularProgressIndicator(),
-          ),
-        ),
+      body:Center(
+        child: Hero(
+            tag: Text('imageAd')
+            , child: ClipRRect(
+          borderRadius: BorderRadius.circular(30),
+            child: Image.network(imageUrl,fit: BoxFit.contain,height:600,))),
       )
     );
 

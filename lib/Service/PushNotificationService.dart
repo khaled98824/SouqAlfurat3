@@ -34,6 +34,7 @@ class PushNotificationService {
     }
     _fcm.configure(
       onMessage: (Map<String, dynamic> message) async {
+        print("Enter");
         print("onMessage112: $message");
         new PushNotfiy()._showNotificationWithDefaultSound(message['data']['title'],message['data']['Mess']);
 
