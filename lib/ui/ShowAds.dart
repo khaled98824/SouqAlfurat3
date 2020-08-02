@@ -6,6 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:intl/intl.dart';
+import 'package:photo_view/photo_view.dart';
+import 'package:photo_view/photo_view_gallery.dart';
 import 'package:sooq1alzour/models/PageRoute.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart';
@@ -604,12 +606,21 @@ class _PageImageState extends State<PageImage> {
         height: 1,
         color: Colors.white,
       ),),),
-      body:Center(
-        child: Hero(
-            tag: Text('imageAd')
-            , child: ClipRRect(
-          borderRadius: BorderRadius.circular(30),
-            child: Image.network(imageUrl,fit: BoxFit.contain,height:600,))),
+      body:PhotoViewGallery.builder(
+          itemCount: adImagesUrl.length,
+          builder: (context,index){
+            return PhotoViewGalleryPageOptions(
+                imageProvider: NetworkImage(adImagesUrl[index]),
+              minScale: PhotoViewComputedScale.contained *0.8,
+              maxScale: PhotoViewComputedScale.covered *2
+            );
+
+          },
+        scrollPhysics: BouncingScrollPhysics(),
+        backgroundDecoration: BoxDecoration(
+          color: Theme.of(context).canvasColor,
+        ),
+        loadingChild: CircularProgressIndicator(),
       )
     );
 
