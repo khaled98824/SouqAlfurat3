@@ -189,7 +189,7 @@ class _MyAccountFState extends State<MyAccountF> {
                     },
                   )),
                   bottomNavigationBar: CurvedNavigationBar(
-                      color: Colors.red[400],
+                      color: Colors.red[500],
                       backgroundColor: Colors.orange,
                       buttonBackgroundColor: Colors.white,
                       animationDuration: Duration(milliseconds: 300),

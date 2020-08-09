@@ -6,7 +6,6 @@ import 'package:sooq1alzour/models/PageRoute.dart';
 import '../AddNewAd.dart';
 import '../AllAds.dart';
 import '../Home.dart';
-import '../SearchUi.dart';
 import '../SerchData.dart';
 import '../myAccount.dart';
 

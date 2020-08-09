@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:sooq1alzour/Auth/Login.dart';
 import 'package:sooq1alzour/models/PageRoute.dart';
 import 'package:sooq1alzour/ui/Home.dart';
-import 'package:sooq1alzour/ui/SearchUi.dart';
 import '../AddNewAd.dart';
 import '../AllAds.dart';
 import '../SerchData.dart';

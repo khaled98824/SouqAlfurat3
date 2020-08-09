@@ -11,6 +11,7 @@ import 'package:sooq1alzour/models/PageRoute.dart';
 import 'package:sooq1alzour/ui/AddNewAd.dart';
 import 'package:sooq1alzour/ui/AllAds.dart';
 import 'package:sooq1alzour/ui/SerchData.dart';
+import 'package:sooq1alzour/ui/ShowAds.dart';
 import 'package:sooq1alzour/ui/categories/Cars&MotorCycles.dart';
 import 'package:sooq1alzour/ui/categories/Clothes.dart';
 import 'package:sooq1alzour/ui/categories/DevicesAndElectronics.dart';
@@ -32,15 +33,19 @@ List<AdsModel> allList = List();
 var icons1 = Icons.burst_mode;
 var icons2 = Icons.home;
 final List<String> _listItem = [
-  'assets/images/two.jpg',
-  'assets/images/three.jpg',
-  'assets/images/four.jpg',
-  'assets/images/five.jpg',
-  'assets/images/one.jpg',
-  'assets/images/two.jpg',
-  'assets/images/three.jpg',
-  'assets/images/four.jpg',
-  'assets/images/five.jpg',
+  'assets/images/Elct2.jpg',
+  'assets/images/cars.jpg',
+  'assets/images/mobile3.jpg',
+  'assets/images/jobs3.jpg',
+  'assets/images/SERV3.jpg',
+  'assets/images/home3.jpg',
+  'assets/images/trucks3.jpg',
+  'assets/images/farm7.jpg',
+  'assets/images/farming3.jpg',
+  'assets/images/game.jpg',
+  'assets/images/clothes.jpg',
+  'assets/images/food.jpg',
+
 ];
 
 bool categoryOrAds = true;
@@ -206,7 +211,7 @@ class _HomeState extends State<Home> {
                                   ),
                                   GridViewItems(
                                     text: "المواشي",
-                                    imagePath: _listItem[8],
+                                    imagePath: _listItem[7],
                                     callback: () {
                                       Navigator.of(context)
                                           .pushNamed(Livestock.id);
@@ -220,7 +225,7 @@ class _HomeState extends State<Home> {
                                 children: <Widget>[
                                   GridViewItems(
                                     text: "الزراعة",
-                                    imagePath: _listItem[6],
+                                    imagePath: _listItem[8],
                                     callback: () {
                                       Navigator.of(context)
                                           .pushNamed(Farming1.id);
@@ -228,7 +233,7 @@ class _HomeState extends State<Home> {
                                   ),
                                   GridViewItems(
                                     text: "ألعاب",
-                                    imagePath: _listItem[8],
+                                    imagePath: _listItem[9],
                                     callback: () {
                                       Navigator.of(context).pushNamed(Games.id);
                                     },
@@ -241,7 +246,7 @@ class _HomeState extends State<Home> {
                                 children: <Widget>[
                                   GridViewItems(
                                     text: "ألبسة",
-                                    imagePath: _listItem[6],
+                                    imagePath: _listItem[10],
                                     callback: () {
                                       Navigator.of(context)
                                           .pushNamed(Clothes.id);
@@ -249,7 +254,7 @@ class _HomeState extends State<Home> {
                                   ),
                                   GridViewItems(
                                     text: "أطعمة",
-                                    imagePath: _listItem[8],
+                                    imagePath: _listItem[11],
                                     callback: () {
                                       Navigator.of(context).pushNamed(Food.id);
                                     },
@@ -697,7 +702,7 @@ class GridViewItems extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                  image: AssetImage(imagePath), fit: BoxFit.cover),
+                  image: AssetImage(imagePath), fit: BoxFit.fill),
               color: Colors.redAccent,
             ),
             child: Transform.translate(
@@ -706,7 +711,7 @@ class GridViewItems extends StatelessWidget {
                     margin: EdgeInsets.symmetric(horizontal: 27, vertical: 82),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.white),
+                        color: Colors.grey[50]),
                     child: Center(
                       child: Text(
                         text,
@@ -759,10 +764,10 @@ class _AllAdsState extends State<AllAds> {
                       crossAxisSpacing: 5,
                       mainAxisSpacing: 5,
                       childAspectRatio:screenSizeHieght>800? 0.7:0.6,
-                      children: List.generate(snapshot.data.documents.length<20?2:19, (index) {
+                      children: List.generate(snapshot.data.documents.length<20?4:19, (index) {
                         return InkWell(
                           onTap: () {
-                            print(index);
+                            Navigator.push(context, BouncyPageRoute(widget: ShowAd(documentId: snapshot.data.documents[index].documentID,)));
                           },
                           child: Card(
                             elevation: 6,
