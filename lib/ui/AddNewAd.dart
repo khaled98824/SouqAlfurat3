@@ -396,7 +396,7 @@ class _AddNewAdState extends State<AddNewAd> {
                       Text(
                         'أضف إعلانك',
                         style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 22,
                             fontFamily: 'AmiriQuran',
                             height: 1.5),
                       ),
@@ -630,7 +630,7 @@ class _AddNewAdState extends State<AddNewAd> {
                               'ما الذي تريد بيعه أو الإعلان عنه ؟',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: 22,
+                                  fontSize: 20,
                                   fontFamily: 'AmiriQuran',
                                   height: 1.5),
                             )),
@@ -754,10 +754,10 @@ class _AddNewAdState extends State<AddNewAd> {
                                     elevation: 7,
                                   ),
                                   Text(
-                                    'إختر القسم الرئيسي :',
+                                    ': إختر القسم الرئيسي ',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 16,
                                         fontFamily: 'AmiriQuran',
                                         height: 0.5),
                                   ),
@@ -788,7 +788,7 @@ class _AddNewAdState extends State<AddNewAd> {
                                                   left: 8, right: 5),
                                               child: Icon(
                                                 Icons.menu,
-                                                size: 28,
+                                                size: 27,
                                               )),
                                           onChanged: (String theDate) {
                                             setState(() {
@@ -802,11 +802,11 @@ class _AddNewAdState extends State<AddNewAd> {
                                           elevation: 7,
                                         ),
                                         Text(
-                                          'إختر القسم الفرعي :',
+                                          ': إختر القسم الفرعي ',
                                           textAlign: TextAlign.center,
 
                                           style: TextStyle(
-                                              fontSize: 18,
+                                              fontSize: 16,
                                               fontFamily: 'AmiriQuran',
                                               height: 0.5),
                                         ),
@@ -835,7 +835,7 @@ class _AddNewAdState extends State<AddNewAd> {
                             right: 10, left: 10, bottom: 2, top: 2),
                         child: SizedBox(
                           height: 42,
-                          width: 280,
+                          width: 240,
                           child: TextFormField(
                             maxLines: 2,
                             controller: nameController,
@@ -850,7 +850,7 @@ class _AddNewAdState extends State<AddNewAd> {
                         'ضع إسم للإعلان',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 18, fontFamily: 'AmiriQuran', height: 1),
+                            fontSize: 16, fontFamily: 'AmiriQuran', height: 1),
                       ),
                     ],
                     alignment: WrapAlignment.center,
@@ -871,10 +871,10 @@ class _AddNewAdState extends State<AddNewAd> {
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.only(
-                            right: 10, left: 10, bottom: 2, top: 4),
+                            right: 10, left: 5, bottom: 2, top: 4),
                         child: SizedBox(
                           height: 80,
-                          width: 278,
+                          width: 230,
                           child: TextFormField(
                             validator: (value) {
                               if (value.isEmpty) {
@@ -946,7 +946,7 @@ class _AddNewAdState extends State<AddNewAd> {
                                     'جديد',
                                     textAlign: TextAlign.right,
                                     style: TextStyle(
-                                        fontSize: 22,
+                                        fontSize: 21,
                                         fontFamily: 'AmiriQuran',
                                         height: 0.5),
                                   ),
@@ -966,7 +966,7 @@ class _AddNewAdState extends State<AddNewAd> {
                                     'مستعمل',
                                     textAlign: TextAlign.right,
                                     style: TextStyle(
-                                        fontSize: 22,
+                                        fontSize: 21,
                                         fontFamily: 'AmiriQuran',
                                         height: 0.5),
                                   ),
@@ -1031,12 +1031,12 @@ class _AddNewAdState extends State<AddNewAd> {
                             elevation: 7,
                           ),
                           Text(
-                            'تحديد المنطقة :',
+                            ': تحديد المنطقة ',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 16,
                                 fontFamily: 'AmiriQuran',
-                                height: 0.5),
+                                height: 1),
                           ),
                         ],
                       ),
@@ -1064,7 +1064,7 @@ class _AddNewAdState extends State<AddNewAd> {
                               '.ل س ',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: 22,
+                                  fontSize: 20,
                                   fontFamily: 'AmiriQuran',
                                   height: 1.5),
                             )),
@@ -1118,7 +1118,7 @@ class _AddNewAdState extends State<AddNewAd> {
                             padding: EdgeInsets.only(right: 2, top: 1),
                             child: Icon(
                               Icons.payment,
-                              size: 45,
+                              size: 40,
                               color: Colors.blueAccent,
                             )),
                       ],
@@ -1178,7 +1178,7 @@ class _AddNewAdState extends State<AddNewAd> {
                             padding: EdgeInsets.only(right: 2, top: 1),
                             child: Icon(
                               Icons.phone_iphone,
-                              size: 45,
+                              size: 40,
                               color: Colors.blueAccent,
                             )),
                       ],
@@ -1253,7 +1253,7 @@ class _AddNewAdState extends State<AddNewAd> {
             ),
           ),
           bottomNavigationBar: CurvedNavigationBar(
-              color: Colors.red[500],
+              color: Color(0xffF26726),
               backgroundColor: Colors.orange,
               buttonBackgroundColor: Colors.white,
               animationDuration: Duration(milliseconds: 300),
@@ -1264,20 +1264,17 @@ class _AddNewAdState extends State<AddNewAd> {
                 Timer(Duration(milliseconds: 300), () {
                   if (index == 0) {
                     Navigator.of(context).pushNamed(MyAccount.id);
-                    loadingImage = false;
                   } else if (index == 1) {
                     Navigator.of(context).pushNamed(AddNewAd.id);
-                    loadingImage = false;
-                  } else if (index == 2) {
+                  }else if (index == 2) {
                     Navigator.of(context).pushNamed(Home.id);
-                    loadingImage = false;
                   }
                 });
               },
               items: <Widget>[
                 Icon(
                   Icons.person,
-                  color: Colors.blue[900],
+                  color:  Colors.blue[900],
                   size: 29,
                 ),
                 Icon(
@@ -1288,7 +1285,6 @@ class _AddNewAdState extends State<AddNewAd> {
                 Icon(
                   Icons.home,
                   color: Colors.blue[900],
-                  size: 29,
                 ),
               ]),
         ),

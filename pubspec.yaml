@@ -90,6 +90,9 @@ flutter:
     - family: DigitalDisplayRegular
       fonts:
         - asset: assets/fonts/DigitalDisplayRegular-ODEO.ttf
+#    - family: TS Rotger Regular
+#      fonts:
+#        - asset: assets/fonts/ArbFONTS-TSRotger-Regular.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

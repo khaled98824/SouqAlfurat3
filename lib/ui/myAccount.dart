@@ -189,11 +189,11 @@ class _MyAccountFState extends State<MyAccountF> {
                     },
                   )),
                   bottomNavigationBar: CurvedNavigationBar(
-                      color: Colors.red[500],
+                      color: Color(0xfff26726),
                       backgroundColor: Colors.orange,
                       buttonBackgroundColor: Colors.white,
                       animationDuration: Duration(milliseconds: 300),
-                      height: 60,
+                      height: 50,
                       animationCurve: Curves.bounceInOut,
                       index: 0,
                       onTap: (index) {
@@ -1155,6 +1155,7 @@ class _AboutUsState extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xff4d4d4d),
       appBar: AppBar(
         title: Text(
           'حول التطبيق',
@@ -1164,6 +1165,23 @@ class _AboutUsState extends State<AboutUs> {
               color: Colors.white,
               height: 1),
         ),
+      ),
+      body: ListView(
+        children: [
+          RichText(
+            textAlign: TextAlign.right,
+              text: TextSpan(
+            children: [
+              TextSpan(
+                text: 'aaaaa\n',
+              ),
+
+              TextSpan(
+                  text: 'aaaaa'
+              )
+            ]
+          ))
+        ],
       ),
     );
   }

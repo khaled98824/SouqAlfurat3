@@ -81,17 +81,17 @@ class _HomeState extends State<Home> {
     return Stack(
       children: <Widget>[
         Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.grey[200],
           body: SafeArea(
               child: Column(
             children: <Widget>[
-              Padding(padding: EdgeInsets.only(top: 1)),
+              Padding(padding: EdgeInsets.only(top: 0)),
               Heade(),
               SizedBox(
-                height: 10,
+                height: 3,
               ),
               SearchAreaDesign(),
-              Padding(padding: EdgeInsets.only(top: 5)),
+              Padding(padding: EdgeInsets.only(top: 4)),
               Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,
                 alignment: WrapAlignment.spaceAround,
@@ -277,7 +277,7 @@ class _HomeState extends State<Home> {
                             alignment: Alignment(1, -1.1),
                             child: Padding(
                               padding: EdgeInsets.symmetric(
-                                  vertical: 16, horizontal: 2),
+                                  vertical: 16, horizontal: 4),
                               child: Card(
                                 child: Padding(
                                   padding: EdgeInsets.only(
@@ -303,7 +303,7 @@ class _HomeState extends State<Home> {
             ],
           )),
           bottomNavigationBar: CurvedNavigationBar(
-              color: Colors.red[500],
+              color: Color(0xffF26726),
               backgroundColor: Colors.orange,
               buttonBackgroundColor: Colors.white,
               animationDuration: Duration(milliseconds: 300),
@@ -322,7 +322,7 @@ class _HomeState extends State<Home> {
               items: <Widget>[
                 Icon(
                   Icons.person,
-                  color: Colors.blue[900],
+                  color:  Colors.blue[900],
                   size: 29,
                 ),
                 Icon(
@@ -333,7 +333,6 @@ class _HomeState extends State<Home> {
                 Icon(
                   Icons.home,
                   color: Colors.blue[900],
-                  size: 29,
                 ),
               ]),
         ),
@@ -398,10 +397,10 @@ Widget Heade() {
     children: <Widget>[
       Container(
           child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Padding(padding: EdgeInsets.only(left: 1)),
+          Padding(padding: EdgeInsets.symmetric(horizontal: 1,vertical: 1)),
           Text(
             'بيع واشتري كل ما تريد بكل سهولة',
             style: TextStyle(
@@ -412,16 +411,8 @@ Widget Heade() {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(right: 10),
-            child: Container(
-              width: 80,
-              height: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(14),
-                color: Colors.blue,
-              ),
-            ),
-          )
+            padding: EdgeInsets.symmetric(vertical: 0,horizontal: 13),
+              child: Image.asset('assets/images/logo.png',height: 51,width: 104,fit: BoxFit.fill,))
         ],
       )),
     ],
@@ -451,7 +442,7 @@ class _SearchAreaDesignState extends State<SearchAreaDesign> {
             textDirection: TextDirection.rtl,
             alignment: Alignment(0.3, 0),
             children: <Widget>[
-              Text('!... إبحث في سوق الزور',
+              Text('!... إبحث في سوق الفرات',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -495,7 +486,7 @@ class ButtonTapped extends StatelessWidget {
                 child: Icon(
                   icon,
                   size: 30,
-                  color: Colors.redAccent[700],
+                  color: Color(0xffF26726),
                   textDirection: TextDirection.rtl,
                 ),
               ),
@@ -560,7 +551,7 @@ class ButtonTapped extends StatelessWidget {
             color: Colors.grey[300],
             boxShadow: [
               BoxShadow(
-                  color: Colors.white,
+                  color: Colors.grey[200],
                   offset: Offset(-4.0, -4.0),
                   blurRadius: 10.0,
                   spreadRadius: 1.0),
@@ -606,7 +597,7 @@ class MyButton extends StatelessWidget {
               child: Icon(
                 icon,
                 size: 30,
-                color: Colors.blueAccent[700],
+                color: Color(0xffF26726),
                 textDirection: TextDirection.rtl,
               ),
             ),
@@ -692,7 +683,7 @@ class GridViewItems extends StatelessWidget {
       onTap: callback,
       child: Card(
         elevation: 0,
-        color: Colors.white,
+        color: Colors.grey[200],
         child: SizedBox(
           width: screenSizeWidth>395?190:172,
           height: 200,
@@ -708,7 +699,7 @@ class GridViewItems extends StatelessWidget {
             child: Transform.translate(
                 offset: Offset(22, -72),
                 child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 27, vertical: 82),
+                    margin: EdgeInsets.symmetric(horizontal: 27, vertical: 84),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey[50]),
@@ -774,7 +765,7 @@ class _AllAdsState extends State<AllAds> {
                             child: Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: Colors.white70,
+                                  color: Colors.grey[200],
                                 ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
