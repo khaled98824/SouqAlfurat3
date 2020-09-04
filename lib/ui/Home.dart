@@ -411,7 +411,7 @@ Widget Heade() {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 0,horizontal: 13),
+            padding: EdgeInsets.symmetric(vertical: 0,horizontal: 3),
               child: Image.asset('assets/images/logo.png',height: 51,width: 104,fit: BoxFit.fill,))
         ],
       )),
