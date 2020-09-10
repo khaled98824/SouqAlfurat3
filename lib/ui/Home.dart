@@ -172,7 +172,7 @@ class _HomeState extends State<Home> {
                                     text: "وظائف وأعمال",
                                     imagePath: _listItem[3],
                                     callback: () {
-                                      Navigator.push(context, BouncyPageRoute(widget: Ads(department: 'وظائف وأعمال',category: 'وظائف وأعمال',)));
+                                      Navigator.push(context, BouncyPageRoute(widget: Ads(department: 'وظائف وأعمال',category: 'وظائف وأعمال')));
                                     },
                                   )
                                 ],
@@ -206,7 +206,7 @@ class _HomeState extends State<Home> {
                                     text: "المعدات والشاحنات",
                                     imagePath: _listItem[6],
                                     callback: () {
-                                     Navigator.push(context, BouncyPageRoute(widget: Ads(department:"االمعدات والشاحنات" ,category:"المعدات والشاحنات" ,)));
+                                     Navigator.push(context, BouncyPageRoute(widget: Ads(department:"المعدات والشاحنات" ,category:"المعدات والشاحنات" ,)));
                                     },
                                   ),
                                   GridViewItems(
@@ -296,7 +296,7 @@ class _HomeState extends State<Home> {
                           ),
                           Padding(
                               padding: EdgeInsets.only(top: 30),
-                              child: AllAds()),
+                              child: NewAds()),
                         ],
                       ),
                     ))),
@@ -723,15 +723,15 @@ class GridViewItems extends StatelessWidget {
   }
 }
 
-class AllAds extends StatefulWidget {
+class NewAds extends StatefulWidget {
   @override
-  _AllAdsState createState() => _AllAdsState();
+  _NewAdsState createState() => _NewAdsState();
 }
 
 String department;
 String category;
 
-class _AllAdsState extends State<AllAds> {
+class _NewAdsState extends State<NewAds> {
   @override
   Widget build(BuildContext context) {
     return Material(

@@ -34,8 +34,6 @@ class _AdsFulState extends State<AdsFul> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
-
   }
 
   @override
@@ -194,7 +192,7 @@ class _AdsFulState extends State<AdsFul> {
                               borderRadius: BorderRadius.circular(40),
                               color: Colors.grey[350]),
                           child: Stack(
-                            alignment: Alignment(0, 0),
+                            alignment: Alignment(-0.2, 0),
                             children: <Widget>[
                               Text('!... إبحث  في قسم $department',
                                   style: TextStyle(
@@ -207,7 +205,7 @@ class _AdsFulState extends State<AdsFul> {
                                   alignment: Alignment(0.9, 0),
                                   child: Icon(
                                     Icons.search,
-                                    size: 32,
+                                    size: 31,
                                   ))
                             ],
                           ),
