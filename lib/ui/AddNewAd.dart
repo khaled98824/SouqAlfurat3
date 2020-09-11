@@ -837,6 +837,11 @@ class _AddNewAdState extends State<AddNewAd> {
                           height: 42,
                           width: 240,
                           child: TextFormField(
+                            validator: (value){
+                              if(value.isEmpty){
+                                return 'أدخل إسم لإعلانك';
+                              }
+                            },
                             maxLines: 2,
                             controller: nameController,
                             textAlign: TextAlign.right,
@@ -878,7 +883,7 @@ class _AddNewAdState extends State<AddNewAd> {
                           child: TextFormField(
                             validator: (value) {
                               if (value.isEmpty) {
-                                return 'Please Fill name Input';
+                                return 'أدخل تفاصيل اكثر لإعلانك';
                               }
                               // return 'Valid Name';
                             },
@@ -1086,7 +1091,7 @@ class _AddNewAdState extends State<AddNewAd> {
                               controller: priceController,
                               validator: (value) {
                                 if (value.isEmpty) {
-                                  return 'Please Fill name Input';
+                                  return 'ضع سعر لإعلانك';
                                 }
                                 // return 'Valid Name';
                               },
@@ -1150,7 +1155,7 @@ class _AddNewAdState extends State<AddNewAd> {
                               controller: phoneController,
                               validator: (value) {
                                 if (value.isEmpty) {
-                                  return 'Please Fill name Input';
+                                  return '!... أدخل رقم جوالك';
                                 }
                                 // return 'Valid Name';
                               },

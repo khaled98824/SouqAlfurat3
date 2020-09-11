@@ -93,13 +93,18 @@ class _LoginScreenState extends State<LoginScreen> {
             key: _formkey,
             child: ListView(
               children: <Widget>[
-                Padding(padding: EdgeInsets.only(top: 30)),
+
+                Padding(padding: EdgeInsets.only(top: 10)),
                 Center(child: Text('تسجيل الدخول',style: TextStyle(
-                  fontSize: 28,
+                  fontSize: 24,
                   fontFamily: 'AmiriQuran',
                   height: 1,
                 ),),),
-                Padding(padding: EdgeInsets.only(top: 220)),
+                Padding(padding: EdgeInsets.only(top: 40)),
+                ClipRRect(
+                  child: Image.asset('assets/images/souq1624wpng.png'),
+                ),
+                Padding(padding: EdgeInsets.only(top: 40)),
                 TextFormField(
                   controller: _emailcontroller,
                   keyboardType: TextInputType.emailAddress,
